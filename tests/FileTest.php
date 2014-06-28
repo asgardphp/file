@@ -28,9 +28,9 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 	// 	$this->assertEquals('http://localhost/folder/file.txt', $file->__toString());
 	// }
 
-	public function testCopyMoveAndDelete() {
-		\Asgard\Common\FileManager::unlink(__DIR__.'/tests/');
-		\Asgard\Common\FileManager::unlink(__DIR__.'/dir/');
+	public function testCopyRenameAndDelete() {
+		\Asgard\File\FileSystem::delete(__DIR__.'/tests/');
+		\Asgard\File\FileSystem::delete(__DIR__.'/dir/');
 
 		$file = new File(__DIR__.'/fixtures/file.txt');
 
@@ -39,8 +39,8 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($copy->exists());
 		$this->assertEquals('copy.txt', $copy->getName());
 
-		#move
-		$copy->move(__DIR__.'/tests/new.txt');
+		#renme
+		$copy->rename(__DIR__.'/tests/new.txt');
 		$this->assertFalse(file_exists(__DIR__.'/tests/copy.txt'));
 		$this->assertTrue(file_exists(__DIR__.'/tests/new.txt'));
 
