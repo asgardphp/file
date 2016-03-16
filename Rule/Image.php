@@ -1,5 +1,5 @@
 <?php
-namespace Asgard\File\Rules;
+namespace Asgard\File\Rule;
 
 /**
  * Check that the file is an image.
